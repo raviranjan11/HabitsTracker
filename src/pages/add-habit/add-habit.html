@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Create Habit</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal()">
+        <ion-icon item-right name="ios-close-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>  
+</ion-header>
+<ion-content padding>
+  <ion-grid>
+    <ion-col>
+      <ion-input type="text" [(ngModel)]="name" placeholder="Name"></ion-input>
+    </ion-col>
+  </ion-grid>
+  <ion-grid>
+    <ion-col>
+      <ion-input type="text" [(ngModel)]="question" placeholder="Question (Did you ... today?)"></ion-input>
+    </ion-col>
+  </ion-grid>
+  <ion-grid>
+    <ion-col>
+      <ion-lable id ="RepeatDay" style="text-align: centre">Repeat</ion-lable>
+    </ion-col>
+    <!-- <ion-col>
+      {{repeat}}
+    </ion-col> -->
+    <ion-col>
+      <ion-select [(ngModel)]="repeat" interface="popover">
+          <ion-option>Every day</ion-option>
+          <ion-option>Every week</ion-option>
+          <ion-option>2 times per week</ion-option>
+          <ion-option>5 times per week</ion-option>
+          <ion-option>Custom...</ion-option>
+      </ion-select>
+    </ion-col>
+  </ion-grid>
+  <ion-grid>
+    <ion-col>
+      <ion-lable id ="Reminder" style="text-align: centre" stacked>Reminder</ion-lable>
+    </ion-col>
+     <ion-col>
+      {{remindAt}}
+    </ion-col> 
+    <ion-col>
+      <!-- <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown" [(ng-model)]="myDate" (click)="myDate=true"></ion-icon> -->
+      <!-- <ion-datetime [hidden]="!myDate" [(ng-model)]="myDateSelect" displayFormat="DD/MM/YYYYHH:MM" pickerFormat="DDMMYYYYHH:MM"></ion-datetime> -->
+      <ion-icon ios="ios-arrow-dropdown" md="md-arrow-dropdown" [(ng-model)]="remindAt" (click)="showDatePicker()"></ion-icon>      
+    </ion-col>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-item>
+      <button ion-button clear=false (click)="closeModal()">DISCARD</button>
+      <button ion-button clear=false (click)="addHabit(name,question,repeat,remindAt)">SAVE</button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
